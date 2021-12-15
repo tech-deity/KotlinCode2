@@ -1,3 +1,5 @@
+import java.nio.DoubleBuffer
+
 fun main() {
 //    val p=Person("vishal ", 22)
 //    println("${p.name}  & ${p.age}")
@@ -11,14 +13,31 @@ fun main() {
 //    c.method1() //inheritance can be seen here
 //    c.childMethod()
 
-    val oneplus =OnePlus()
-    oneplus.display()
-    val simple = Phone()
-   println( oneplus.toString())
+//    val oneplus =OnePlus()
+//    oneplus.display()
+//    val simple = Phone()
+//   println( oneplus.toString())
+
+val circle =Circl(4.0)
+   // circle.show()
+    //println(circle.areas())
+    circle.drag()
+    if(circle is Drags){ //type checking
+        println("this is circle ")
+    }
 
 
+
+val tri =Triangless(2.0,5.0)
+ //   tri.show()
+   // tri.drag()
+    //println(tri.areas())
+
+val player =Player("ravi kumar")
+player.drag()
 
 }
+
 
 
 
@@ -88,3 +107,47 @@ class OnePlus:Phone(){
     }
 
 }
+
+interface Drags{
+    fun drag()
+}
+
+abstract class shapes:Drags{
+    abstract fun areas():Double
+    fun show(){
+        println("show the shape")
+    }
+
+}
+
+class Circl(val radius:Double):shapes(){
+    override fun areas(): Double {
+        return Math.PI*radius*radius
+    }
+
+    override fun drag() {
+        println("circle can be draggable ")
+    }
+
+}
+
+class Triangless(val base:Double,val height:Double):shapes(){
+    override fun areas(): Double {
+        return 0.5*base*height
+    }
+
+    override fun drag() {
+        println("triangle is draggable ")
+    }
+
+}
+
+class Player(val name :String):Drags{
+    override fun drag() {
+        println("$name is draggable ")
+    }
+
+
+}
+
+
