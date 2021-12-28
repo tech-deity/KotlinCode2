@@ -15,5 +15,6 @@ fun main() {
 
     map1.put('B',"ravi")
     map1.put('A',"ram")
+    map1.put('C',"ravikant")
 println(map1)
 }
